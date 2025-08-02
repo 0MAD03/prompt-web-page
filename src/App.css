@@ -1,3 +1,4 @@
+/* App.css - Steam機能追加版 */
 .App {
   text-align: center;
 }
@@ -15,17 +16,114 @@
 
 .App-header {
   background-color: #282c34;
+  padding: 20px;
+  color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.App-link:hover {
+  text-decoration: underline;
+}
+
+/* SecretPage専用スタイル */
+.secret-page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h3 {
+	margin: 8px 0px;
+}
+
+.password {
+  background-color: #000;
+  color: #66c0f4;
+  padding: 4px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #66c0f4;
+  word-break: break-all;
+}
+
+.copy-button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 4px 8px;
+	margin: 0px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+  background-color: #4fa8c5;
+}
+
+.instructions {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  border: 2px solid #66c0f4;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.instructions ol {
+  margin: 0 auto;
+}
+
+.instructions li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.warning {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.error-page {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.loading {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .steam-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .steam-button, .store-button {
+    width: 200px;
+  }
+  
+  .qr-code {
+    max-width: 180px;
+    height: auto;
+  }
 }
 
 @keyframes App-logo-spin {

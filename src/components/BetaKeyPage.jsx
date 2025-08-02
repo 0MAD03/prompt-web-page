@@ -1,5 +1,6 @@
 // src/components/SecretPage.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -9,7 +10,8 @@ const supabase = createClient(
 
 const SecretPage = () => {
   const [betaKey, setBetaKey] = useState('');
-  const [eventName, setEventName] = useState('');
+  const [appId, setAppId] = useState('');
+  const [betaName, setBetaName] = useState('');
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -37,13 +39,15 @@ const SecretPage = () => {
 
         if (data && data.length > 0) {
           setBetaKey(data[0].beta_key);
+          setAppId(data[0].app_id || ''); // Steam App ID
+          setBetaName(data[0].beta_name || ''); // ベータブランチ名
           setIsAuthorized(true);
         } else {
-          setError('認証に失敗しました');
+          setError('認証に失敗しました。');
         }
       } catch (error) {
         console.error('Access denied:', error);
-        setError('アクセスが拒否されました');
+        setError('アクセスが拒否されました。');
       } finally {
         setLoading(false);
       }
@@ -81,11 +85,7 @@ const SecretPage = () => {
         <header className="App-header">
           <div className="error-page">
             <h1>🚫 アクセス拒否</h1>
-            <p>{error || '正しいURLからアクセスしてください'}</p>
-            <p>有効なeventとsecretパラメータが必要です</p>
-            <a href="/" className="App-link">
-              ホームに戻る
-            </a>
+            <p>{error || '正しいURLからアクセスしてください。'}</p>
           </div>
         </header>
       </div>
@@ -96,37 +96,31 @@ const SecretPage = () => {
     <div className="App">
       <header className="App-header">
         <div className="secret-page">
-          <h1>🎮 {eventName}</h1>
-          <h2>✨ ベータアクセス認証済み</h2>
-          
-          <div className="password-section">
-            <h3>Steamベータパスワード</h3>
-            <div className="password-container">
-              <code className="password">{betaKey}</code>
-              <button onClick={copyToClipboard} className="copy-button">
-                📋 コピー
-              </button>
-            </div>
-          </div>
-          
+					<h1>🎉特別ビルド🎉</h1>
+
           <div className="instructions">
-            <h3>🔧 使用方法</h3>
+            <h3>📋 アンロック方法</h3>
+						<hr/>
             <ol style={{ textAlign: 'left', maxWidth: '400px' }}>
               <li>Steamでゲームを右クリック</li>
               <li>「プロパティ」を選択</li>
               <li>「ベータ」タブを開く</li>
-              <li>上記パスワードを入力</li>
+              <li>「プライベートベータ」でパスワードを入力</li>
+							<ol>
+								<li>
+									パスワード：<code className="password">{betaKey}</code>
+									<button onClick={copyToClipboard} className="copy-button">
+										📋 コピー
+									</button>
+								</li>
+							</ol>
               <li>「コードを確認」をクリック</li>
             </ol>
           </div>
 
           <div className="warning">
-            <p>⚠️ このパスワードは他の人と共有しないでください</p>
+            <p>⚠️ このURLおよびパスワードは他の人と共有しないでください</p>
           </div>
-          
-          <a href="/" className="App-link">
-            ホームに戻る
-          </a>
         </div>
       </header>
     </div>
