@@ -1,8 +1,4 @@
 /* App.css - Steam機能追加版 */
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -12,6 +8,10 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+h1 {
+	text-align: center;
 }
 
 .App-header {
@@ -73,6 +73,15 @@ h3 {
   background-color: #4fa8c5;
 }
 
+.description {
+  background: linear-gradient(135deg, #1b3826 0%, #2c5e2a 100%);
+  border: 2px solid #66f479;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+
 .instructions {
   background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
   border: 2px solid #66c0f4;
@@ -81,11 +90,7 @@ h3 {
   margin: 20px 0;
 }
 
-.instructions ol {
-  margin: 0 auto;
-}
-
-.instructions li {
+li {
   margin: 10px 0;
   font-size: 16px;
 }

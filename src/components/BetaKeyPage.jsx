@@ -1,6 +1,6 @@
 // src/components/SecretPage.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -10,8 +10,7 @@ const supabase = createClient(
 
 const SecretPage = () => {
   const [betaKey, setBetaKey] = useState('');
-  const [appId, setAppId] = useState('');
-  const [betaName, setBetaName] = useState('');
+  const [description, setDescription] = useState('');
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -39,8 +38,7 @@ const SecretPage = () => {
 
         if (data && data.length > 0) {
           setBetaKey(data[0].beta_key);
-          setAppId(data[0].app_id || ''); // Steam App ID
-          setBetaName(data[0].beta_name || ''); // ベータブランチ名
+          setDescription(data[0].description);
           setIsAuthorized(true);
         } else {
           setError('認証に失敗しました。');
@@ -97,6 +95,11 @@ const SecretPage = () => {
       <header className="App-header">
         <div className="secret-page">
 					<h1>🎉特別ビルド🎉</h1>
+
+
+          <div className="description">
+  					<ReactMarkdown>{description}</ReactMarkdown>
+					</div>
 
           <div className="instructions">
             <h3>📋 アンロック方法</h3>
