@@ -1,15 +1,13 @@
 // App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './components/HomePage';
 import BetaKeyPage from './components/BetaKeyPage';
 
 function App() {
-  const basename = process.env.NODE_ENV === 'production' ? '/prompt-web-page' : '';
-
   return (
-     <BrowserRouter basename={basename}>
+     <HashRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -17,7 +15,7 @@ function App() {
         	<Route path="*" element={<h1>Not Found Page</h1>} />
         </Routes>
       </div>
-     </BrowserRouter>
+     </HashRouter>
   );
 }
 
