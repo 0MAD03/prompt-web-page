@@ -1,5 +1,6 @@
 // src/components/SecretPage.js
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { createClient } from '@supabase/supabase-js';
 
@@ -16,11 +17,11 @@ const BetaKeyPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get('name');
-    const secretKey = urlParams.get('secret_key');
+	const [searchParams] = useSearchParams();
+	const name = searchParams.get('name');
+	const secretKey = searchParams.get('secret_key');
 
+  useEffect(() => {
     if (!name || !secretKey) {
       setLoading(false);
       setError('URLパラメータが不足しています');
@@ -53,7 +54,7 @@ const BetaKeyPage = () => {
     };
 
     fetchBetaKey();
-  }, []);
+  }, [name, secretKey]);
 
   const copyToClipboard = async () => {
     try {
