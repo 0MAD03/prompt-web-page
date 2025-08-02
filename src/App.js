@@ -8,6 +8,8 @@ import BetaKeyPage from './components/BetaKeyPage';
 function App() {
   const basename = process.env.NODE_ENV === 'production' ? '/prompt-web-page' : '';
 
+	console.log("process.env.REACT_APP_SUPABASE_URL = ", process.env.REACT_APP_SUPABASE_URL);
+
   return (
      <BrowserRouter basename={basename}>
       <div className="App">
