@@ -3,15 +3,6 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { createClient } from '@supabase/supabase-js';
 
-
-console.log('=== 環境変数デバッグ ===');
-console.log('SUPABASE_URL:', process.env.REACT_APP_SUPABASE_URL);
-console.log('PUBLISHABLE_KEY:', process.env.REACT_APP_SUPABASE_PUBLISHABLE_KEY);
-console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('すべてのREACT_APP環境変数:', 
-	Object.keys(process.env).filter(key => key.startsWith('REACT_APP_'))
-);
-
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
   process.env.REACT_APP_SUPABASE_PUBLISHABLE_KEY
