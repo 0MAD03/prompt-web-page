@@ -7,7 +7,7 @@ import BetaKeyPage from './components/BetaKeyPage';
 
 function App() {
   return (
-     <HashRouter hashType="hashbang">
+     <HashRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
